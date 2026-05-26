@@ -2,8 +2,7 @@ name: CSVTU Notice Alert
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
-
+    - cron: '*/10 * * * *'  # adjust as needed
   workflow_dispatch:
 
 jobs:
@@ -11,16 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4.2.2        # updated
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5.6.0    # updated
         with:
-          python-version: "3.13"
+          python-version: '3.13'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install requests beautifulsoup4
 
       - name: Run script
         env:
