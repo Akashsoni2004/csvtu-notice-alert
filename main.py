@@ -1,6 +1,4 @@
 import os
-import schedule
-import time
 
 def check_notice():
     
@@ -94,13 +92,9 @@ def check_notice():
         print("No new notice.")
 
 
-schedule.every(5).minutes.do(check_notice)
 
 # Run immediately once
 check_notice()
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
 
 
