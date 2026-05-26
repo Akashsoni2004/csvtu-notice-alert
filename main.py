@@ -6,8 +6,8 @@ def check_notice():
     import smtplib
     from email.mime.text import MIMEText
 
-    EMAIL = os.getenv("akashkrsoni2004@gmail.com")
-    PASSWORD = os.getenv("wjqz cesy jvmt brwd")
+    EMAIL = os.getenv("EMAIL")
+    PASSWORD = os.getenv("PASSWORD")
 
     def send_email(subject, body):
 
@@ -21,7 +21,7 @@ def check_notice():
 
         msg["Subject"] = subject
         msg["From"] = EMAIL
-        msg["To"] = to_email
+        msg["To"] = ", ".join(to_email)
         msg["Cc"] = ", ".join(cc_email)
 
         recipients = to_email + cc_email
@@ -66,10 +66,10 @@ def check_notice():
 
         title = notice.text.strip()
         link = notice["href"]
-        
 
     else:
         print("Notice not found")
+        return
 
 
     # Read old notice
