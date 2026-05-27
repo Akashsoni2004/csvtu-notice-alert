@@ -2,7 +2,8 @@ name: CSVTU Notice Alert
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # adjust as needed
+    - cron: '*/10 * * * *'
+
   workflow_dispatch:
 
 jobs:
@@ -10,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4.2.2        # updated
+      - uses: actions/checkout@v4.2.2
 
-      - uses: actions/setup-python@v5.6.0    # updated
+      - uses: actions/setup-python@v5.6.0
         with:
           python-version: '3.13'
 
@@ -24,3 +25,15 @@ jobs:
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
         run: python main.py
+
+      - name: Commit updated notice file
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+          git add last_notice.txt
+
+          git diff --cached --quiet || git commit -m "Update last notice"
+
+      - name: Push changes
+        run: git push
