@@ -75,7 +75,7 @@ def check_notice():
     # Read old notice
     try:
         with open("last_notice.txt", "r") as file:
-            old_notice_id = file.read()
+            old_notice_id = file.read().strip()
     except:
         old_notice_id=""
 
