@@ -11,20 +11,15 @@ def check_notice():
 
     def send_email(subject, body):
 
-        to_email = ["akashkrsoni2004@gmail.com"]
-        cc_email = [
-            "aditiverma00300@gmail.com", 
-            "sinhajayanshi@gmail.com"
-        ]
+        to_email = "akashkrsoni2004@gmail.com"
 
         msg = MIMEText(body)
 
         msg["Subject"] = subject
         msg["From"] = EMAIL
-        msg["To"] = ", ".join(to_email)
-        msg["Cc"] = ", ".join(cc_email)
+        msg["To"] = to_email
 
-        recipients = to_email + cc_email
+        recipients = to_email
 
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
